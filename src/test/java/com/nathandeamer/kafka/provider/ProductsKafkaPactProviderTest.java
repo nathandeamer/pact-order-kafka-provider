@@ -34,9 +34,9 @@ import static org.mockito.Mockito.verify;
 @Provider("pact-order-kafka-provider")
 @PactBroker(url = "${PACT_BROKER_BASE_URL}", authentication = @PactBrokerAuth(token = "${PACT_BROKER_TOKEN}"))
 @VerificationReports(value={"console", "markdown", "json"}, reportDir = "build/pact/reports")
-public class ProductsKafkaProducerTest {
+public class ProductsKafkaPactProviderTest {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(ProductsKafkaProducerTest.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(ProductsKafkaPactProviderTest.class);
 
   @MockBean
   private KafkaTemplate<String, String> kafkaTemplate;

@@ -24,16 +24,6 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
-
-	if (System.getProperty('pactPublishResults') == 'true') {
-		systemProperty 'pact.provider.version', getGitHash()
-		systemProperty 'pact.provider.branch', getGitBranch()
-		systemProperty 'pact.verifier.publishResults', 'true'
-	}
-}
-
 def getGitHash = { ->
 	def stdout = new ByteArrayOutputStream()
 	exec {
@@ -58,4 +48,14 @@ static def getOrDefault(env, defaultVal) {
 		val = defaultVal
 	}
 	return val
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+
+	if (System.getProperty('pactPublishResults') == 'true') {
+		systemProperty 'pact.provider.version', getGitHash()
+		systemProperty 'pact.provider.branch', getGitBranch()
+		systemProperty 'pact.verifier.publishResults', 'true'
+	}
 }
