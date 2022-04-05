@@ -1,0 +1,8 @@
+spring:
+  kafka:
+    consumer:
+      group-id: orders-group
+      auto-offset-reset: earliest
+
+server:
+  port: 8080
